@@ -21,6 +21,13 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <TypeScriptCompile Include="client-app-ts\src\global\apiConstants.ts" />
+    <TypeScriptCompile Include="client-app-ts\src\hooks\useTimedDependencyToggle.hook.ts" />
+    <TypeScriptCompile Include="client-app-ts\src\hooks\useTimeout.hook.ts" />
+    <TypeScriptCompile Include="client-app-ts\src\models\weatherForecast.model.tsx" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
