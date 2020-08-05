@@ -1,5 +1,5 @@
 ﻿import React, {useCallback, useEffect, useRef} from 'react';
-import {Disposable} from "../Utility/utility-types";
+import {Disposable} from "../utility/utility-types";
 
 /**
  * Use setTimeout with Hooks in a declarative way.

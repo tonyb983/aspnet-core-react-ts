@@ -26,6 +26,9 @@
     <TypeScriptCompile Include="client-app-ts\src\hooks\useTimedDependencyToggle.hook.ts" />
     <TypeScriptCompile Include="client-app-ts\src\hooks\useTimeout.hook.ts" />
     <TypeScriptCompile Include="client-app-ts\src\models\weatherForecast.model.tsx" />
+    <TypeScriptCompile Include="client-app-ts\src\providers\GlobalProviders.tsx" />
+    <TypeScriptCompile Include="client-app-ts\src\queries\fetchQueries.ts" />
+    <TypeScriptCompile Include="client-app-ts\src\suspense\ErrorFallback.tsx" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

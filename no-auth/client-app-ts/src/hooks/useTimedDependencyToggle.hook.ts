@@ -1,6 +1,7 @@
-﻿import {MutableRefObject, useRef} from "react";
+﻿// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import {useRef} from "react";
 import { useInterval } from "./useInterval.hook";
-import { Disposable } from "../Utility/utility-types";
+import { Disposable } from "../utility/utility-types";
 
 export const useTimedDependencyToggle = (seconds: number, fireImmediately = true): [boolean, Disposable] => {
     const depRef = useRef(fireImmediately);

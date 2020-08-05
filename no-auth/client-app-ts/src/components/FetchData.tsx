@@ -1,11 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {useTimedDependencyToggle} from "../hooks/useTimedDependencyToggle.hook";
 import {WeatherForecast} from "../models/weatherForecast.model";
-import { ForecastEndpoint } from "../global/apiConstants";
-
-interface Props {
-  
-}
+import Global  from "../global/apiConstants";
 
 interface State {
     loading: boolean;
@@ -17,33 +13,15 @@ const defaultState: State = {
     forecasts: [],
 }
 
-// TODO
-async function useFetch<TData>(endpoint: string, options?: RequestInit) {
-    const loading = useRef(true);
-    const error = useRef<Error>();
-    const data = useRef<TData>();
-    
-    try {
-        const response = await fetch(endpoint, options);
-        data.current = await response.json() as TData;
-    }
-    catch(e){
-        error.current = e;
-    }
-    loading.current = true;
-    
-    return {loading, error, data};
-}
-
 const fetchCall = async (setter: React.Dispatch<React.SetStateAction<State>>)/*useCallback(async ()*/ => {
-    const response = await fetch(ForecastEndpoint, {});
+    const response = await fetch(Global.urls.allForecasts(), {});
     let forecasts = await response.json() as WeatherForecast[];
     setter(prev => {
         return {...prev, forecasts, loading: false};
         })
     }
 
-const FetchData: React.FC<Props> = ({}: Props) => {
+const FetchData: React.FC = () => {
     const [state, setState] = useState(defaultState);    
     const [dep, cancel] = useTimedDependencyToggle(5);
   
